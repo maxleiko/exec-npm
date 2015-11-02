@@ -1,0 +1,29 @@
+{
+  "name": "exec-npm",
+  "version": "1.0.0",
+  "description": "Executes npm commands within a child_process fork in order to prevent npm to take too much memory",
+  "main": "exec-npm.js",
+  "dependencies": {
+    "npm": "^3.3.10"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha\t"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxleiko/exec-npm.git"
+  },
+  "keywords": [
+    "exec",
+    "fork",
+    "npm",
+    "memory"
+  ],
+  "author": "Maxime Tricoire <max.tricoire@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/maxleiko/exec-npm/issues"
+  },
+  "homepage": "https://github.com/maxleiko/exec-npm#readme"
+}
