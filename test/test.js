@@ -7,7 +7,7 @@ describe('execNpm', function () {
 
     it('should install "async" in temp dir', function (done) {
         cmd = [ 'install', 'async', '--prefix='+os.tmpdir() ];
-        execNpm(cmd, done);
+        execNpm(cmd, { stdio: 'inherit' }, done);
     });
 
     it('should uninstall "async" from temp dir', function (done) {

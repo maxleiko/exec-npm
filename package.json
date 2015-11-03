@@ -1,11 +1,9 @@
 {
   "name": "exec-npm",
-  "version": "1.0.1",
-  "description": "Executes npm commands within a child_process fork in order to prevent npm to take too much memory",
+  "version": "2.0.0",
+  "description": "Executes npm commands within a child_process spawn in order to prevent npm to take too much memory",
   "main": "exec-npm.js",
-  "dependencies": {
-    "npm": "^3.3.10"
-  },
+  "dependencies": {},
   "devDependencies": {},
   "scripts": {
     "test": "mocha\t"

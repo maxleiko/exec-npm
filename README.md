@@ -1,6 +1,8 @@
 # exec-npm
-Executes npm within a child_process fork in order to prevent npm to take too much memory in the current one.  
+Executes npm within a child_process spawn in order to prevent npm to take too much memory in the current one.  
 *This module has been created to free the [Kevoree Node.js runtime](https://github.com/kevoree/kevoree-nodejs-runtime) from npm's heavy memory usage.*
+
+** :warning: This module needs to be able to access the `npm` executable in the PATH (if you have npm installed globally, then it should be ok)**
 
 ### Installation
 
@@ -32,5 +34,5 @@ execNpm(cmd, function (err) {
 
 **execNpm(args, options, callback)**: *Function*  
  - args: *Array* - command-line arguments to give to the **npm** client (see npm's help)
- - options (optional): *Object* - child_process fork options
+ - options (optional): *Object* - child_process spawn options
  - callback: *Function* - a function to be called when the process is done (first parameter is the error, if any)
