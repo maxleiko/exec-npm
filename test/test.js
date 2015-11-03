@@ -2,6 +2,7 @@ var os = require('os');
 var execNpm = require('../exec-npm');
 
 describe('execNpm', function () {
+    this.timeout(5000);
     var cmd;
 
     it('should install "async" in temp dir', function (done) {
