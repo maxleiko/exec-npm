@@ -1,4 +1,5 @@
-var fork   = require('child_process').fork;
+var fork   = require('child_process').fork,
+    path   = require('path');
 
 /**
  *
@@ -13,7 +14,7 @@ function execNpm(args, options, callback) {
     }
 
     if (args instanceof Array && args.length > 0) {
-        var npm = fork('node_modules/npm/cli.js', args, {
+        var npm = fork(path.resolve(__dirname, 'node_modules', 'npm', 'cli.js'), args, {
             cwd: options.cwd || process.cwd(),
             env: options.env || process.env,
             execPath: options.execPath || process.execPath,
