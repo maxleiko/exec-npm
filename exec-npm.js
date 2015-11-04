@@ -1,4 +1,4 @@
-var spawn   = require('child_process').spawn;
+var spawn = require('child_process').spawn;
 
 /**
  *
@@ -13,7 +13,14 @@ function execNpm(args, options, callback) {
     }
 
     if (args instanceof Array && args.length > 0) {
-        var npm = spawn('npm', args, {
+        var cmd = 'npm';
+        if (/^win/.test(process.platform)) {
+            cmd = process.env.comspec;
+            args.unshift('/c');
+            args.unshift('npm');
+        }
+
+        var npm = spawn(cmd, args, {
             cwd: options.cwd || process.cwd(),
             env: options.env || process.env,
             stdio: options.stdio || 'pipe',
@@ -22,13 +29,27 @@ function execNpm(args, options, callback) {
             gid: (typeof options.uid === 'number') ? options.gid : undefined
         });
 
-        npm.on('close', function (code) {
-          if (code !== 0) {
-            callback(new Error('npm '+args.join(' ')));
-          } else {
-            callback();
+        var error;
+        npm.on('close', function(code) {
+            switch (code) {
+                case -2:
+                  callback(error);
+                  break;
+
+                case 0:
+                  callback();
+                  break;
+
+                default:
+                  callback(new Error('npm ' + args.join(' ')));
+                  break;
+            }
+
             npm.unref();
-          }
+        });
+
+        npm.on('error', function(err) {
+            error = err;
         });
     } else {
         callback(new Error('execNpm "args" param must contain at least one string command'));

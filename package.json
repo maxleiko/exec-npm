@@ -1,6 +1,6 @@
 {
   "name": "exec-npm",
-  "version": "2.0.0",
+  "version": "2.1.0-alpha",
   "description": "Executes npm commands within a child_process spawn in order to prevent npm to take too much memory",
   "main": "exec-npm.js",
   "dependencies": {},
