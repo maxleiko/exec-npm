@@ -16,8 +16,8 @@ function execNpm(args, options, callback) {
         var cmd = 'npm';
         if (/^win/.test(process.platform)) {
             cmd = process.env.comspec;
-            args.unshift('/c');
             args.unshift('npm');
+            args.unshift('/c');
         }
 
         var npm = spawn(cmd, args, {
